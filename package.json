@@ -1,0 +1,20 @@
+{
+  "name": "RDB-Game-Item-Simulator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "src/nodemon app.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
