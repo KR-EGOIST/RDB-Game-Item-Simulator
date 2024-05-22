@@ -14,7 +14,7 @@
 |🔨 function|function.js 변경(기능추가 등)|
 
 ### [API 명세서](https://industrious-lasagna-717.notion.site/Node-js-API-fd72562f94f24d9cb4e50847729ad95a?pvs=4)
-### [요구사항](https://teamsparta.notion.site/Node-js-7e1595e689fe42098ca942cbbd31425d)
+### [요구사항](https://teamsparta.notion.site/Node-js-18937b864baa453e9674dadee151e369)
 
 ### 1. **암호화 방식**
     - 비밀번호를 DB에 저장할 때 Hash를 이용했는데, Hash는 단방향 암호화와 양방향 암호화 중 어떤 암호화 방식에 해당할까요?
