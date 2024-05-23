@@ -142,7 +142,7 @@ exports.Prisma.CharactersScalarFieldEnum = {
 exports.Prisma.InventorysScalarFieldEnum = {
   inventoryId: 'inventoryId',
   CharacterId: 'CharacterId',
-  itemCode: 'itemCode',
+  ItemCode: 'ItemCode',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -150,7 +150,7 @@ exports.Prisma.InventorysScalarFieldEnum = {
 exports.Prisma.EquipsScalarFieldEnum = {
   equipId: 'equipId',
   CharacterId: 'CharacterId',
-  itemCode: 'itemCode',
+  ItemCode: 'ItemCode',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

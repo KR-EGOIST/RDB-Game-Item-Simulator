@@ -3165,19 +3165,19 @@ export namespace Prisma {
   export type InventorysAvgAggregateOutputType = {
     inventoryId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
   }
 
   export type InventorysSumAggregateOutputType = {
     inventoryId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
   }
 
   export type InventorysMinAggregateOutputType = {
     inventoryId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3185,7 +3185,7 @@ export namespace Prisma {
   export type InventorysMaxAggregateOutputType = {
     inventoryId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3193,7 +3193,7 @@ export namespace Prisma {
   export type InventorysCountAggregateOutputType = {
     inventoryId: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3203,19 +3203,19 @@ export namespace Prisma {
   export type InventorysAvgAggregateInputType = {
     inventoryId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
   }
 
   export type InventorysSumAggregateInputType = {
     inventoryId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
   }
 
   export type InventorysMinAggregateInputType = {
     inventoryId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3223,7 +3223,7 @@ export namespace Prisma {
   export type InventorysMaxAggregateInputType = {
     inventoryId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3231,7 +3231,7 @@ export namespace Prisma {
   export type InventorysCountAggregateInputType = {
     inventoryId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3326,7 +3326,7 @@ export namespace Prisma {
   export type InventorysGroupByOutputType = {
     inventoryId: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt: Date
     updatedAt: Date
     _count: InventorysCountAggregateOutputType | null
@@ -3353,7 +3353,7 @@ export namespace Prisma {
   export type InventorysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     inventoryId?: boolean
     CharacterId?: boolean
-    itemCode?: boolean
+    ItemCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     character?: boolean | CharactersDefaultArgs<ExtArgs>
@@ -3362,7 +3362,7 @@ export namespace Prisma {
   export type InventorysSelectScalar = {
     inventoryId?: boolean
     CharacterId?: boolean
-    itemCode?: boolean
+    ItemCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -3381,7 +3381,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       inventoryId: number
       CharacterId: number
-      itemCode: number
+      ItemCode: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["inventorys"]>
@@ -3781,7 +3781,7 @@ export namespace Prisma {
   interface InventorysFieldRefs {
     readonly inventoryId: FieldRef<"Inventorys", 'Int'>
     readonly CharacterId: FieldRef<"Inventorys", 'Int'>
-    readonly itemCode: FieldRef<"Inventorys", 'Int'>
+    readonly ItemCode: FieldRef<"Inventorys", 'Int'>
     readonly createdAt: FieldRef<"Inventorys", 'DateTime'>
     readonly updatedAt: FieldRef<"Inventorys", 'DateTime'>
   }
@@ -4112,19 +4112,19 @@ export namespace Prisma {
   export type EquipsAvgAggregateOutputType = {
     equipId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
   }
 
   export type EquipsSumAggregateOutputType = {
     equipId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
   }
 
   export type EquipsMinAggregateOutputType = {
     equipId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4132,7 +4132,7 @@ export namespace Prisma {
   export type EquipsMaxAggregateOutputType = {
     equipId: number | null
     CharacterId: number | null
-    itemCode: number | null
+    ItemCode: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4140,7 +4140,7 @@ export namespace Prisma {
   export type EquipsCountAggregateOutputType = {
     equipId: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4150,19 +4150,19 @@ export namespace Prisma {
   export type EquipsAvgAggregateInputType = {
     equipId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
   }
 
   export type EquipsSumAggregateInputType = {
     equipId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
   }
 
   export type EquipsMinAggregateInputType = {
     equipId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4170,7 +4170,7 @@ export namespace Prisma {
   export type EquipsMaxAggregateInputType = {
     equipId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4178,7 +4178,7 @@ export namespace Prisma {
   export type EquipsCountAggregateInputType = {
     equipId?: true
     CharacterId?: true
-    itemCode?: true
+    ItemCode?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4273,7 +4273,7 @@ export namespace Prisma {
   export type EquipsGroupByOutputType = {
     equipId: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt: Date
     updatedAt: Date
     _count: EquipsCountAggregateOutputType | null
@@ -4300,7 +4300,7 @@ export namespace Prisma {
   export type EquipsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     equipId?: boolean
     CharacterId?: boolean
-    itemCode?: boolean
+    ItemCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     character?: boolean | CharactersDefaultArgs<ExtArgs>
@@ -4309,7 +4309,7 @@ export namespace Prisma {
   export type EquipsSelectScalar = {
     equipId?: boolean
     CharacterId?: boolean
-    itemCode?: boolean
+    ItemCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -4328,7 +4328,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       equipId: number
       CharacterId: number
-      itemCode: number
+      ItemCode: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["equips"]>
@@ -4728,7 +4728,7 @@ export namespace Prisma {
   interface EquipsFieldRefs {
     readonly equipId: FieldRef<"Equips", 'Int'>
     readonly CharacterId: FieldRef<"Equips", 'Int'>
-    readonly itemCode: FieldRef<"Equips", 'Int'>
+    readonly ItemCode: FieldRef<"Equips", 'Int'>
     readonly createdAt: FieldRef<"Equips", 'DateTime'>
     readonly updatedAt: FieldRef<"Equips", 'DateTime'>
   }
@@ -5087,7 +5087,7 @@ export namespace Prisma {
   export const InventorysScalarFieldEnum: {
     inventoryId: 'inventoryId',
     CharacterId: 'CharacterId',
-    itemCode: 'itemCode',
+    ItemCode: 'ItemCode',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5098,7 +5098,7 @@ export namespace Prisma {
   export const EquipsScalarFieldEnum: {
     equipId: 'equipId',
     CharacterId: 'CharacterId',
-    itemCode: 'itemCode',
+    ItemCode: 'ItemCode',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5296,7 +5296,7 @@ export namespace Prisma {
     NOT?: InventorysWhereInput | InventorysWhereInput[]
     inventoryId?: IntFilter<"Inventorys"> | number
     CharacterId?: IntFilter<"Inventorys"> | number
-    itemCode?: IntFilter<"Inventorys"> | number
+    ItemCode?: IntFilter<"Inventorys"> | number
     createdAt?: DateTimeFilter<"Inventorys"> | Date | string
     updatedAt?: DateTimeFilter<"Inventorys"> | Date | string
     character?: XOR<CharactersRelationFilter, CharactersWhereInput>
@@ -5305,7 +5305,7 @@ export namespace Prisma {
   export type InventorysOrderByWithRelationInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     character?: CharactersOrderByWithRelationInput
@@ -5317,7 +5317,7 @@ export namespace Prisma {
     AND?: InventorysWhereInput | InventorysWhereInput[]
     OR?: InventorysWhereInput[]
     NOT?: InventorysWhereInput | InventorysWhereInput[]
-    itemCode?: IntFilter<"Inventorys"> | number
+    ItemCode?: IntFilter<"Inventorys"> | number
     createdAt?: DateTimeFilter<"Inventorys"> | Date | string
     updatedAt?: DateTimeFilter<"Inventorys"> | Date | string
     character?: XOR<CharactersRelationFilter, CharactersWhereInput>
@@ -5326,7 +5326,7 @@ export namespace Prisma {
   export type InventorysOrderByWithAggregationInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: InventorysCountOrderByAggregateInput
@@ -5342,7 +5342,7 @@ export namespace Prisma {
     NOT?: InventorysScalarWhereWithAggregatesInput | InventorysScalarWhereWithAggregatesInput[]
     inventoryId?: IntWithAggregatesFilter<"Inventorys"> | number
     CharacterId?: IntWithAggregatesFilter<"Inventorys"> | number
-    itemCode?: IntWithAggregatesFilter<"Inventorys"> | number
+    ItemCode?: IntWithAggregatesFilter<"Inventorys"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Inventorys"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Inventorys"> | Date | string
   }
@@ -5353,7 +5353,7 @@ export namespace Prisma {
     NOT?: EquipsWhereInput | EquipsWhereInput[]
     equipId?: IntFilter<"Equips"> | number
     CharacterId?: IntFilter<"Equips"> | number
-    itemCode?: IntFilter<"Equips"> | number
+    ItemCode?: IntFilter<"Equips"> | number
     createdAt?: DateTimeFilter<"Equips"> | Date | string
     updatedAt?: DateTimeFilter<"Equips"> | Date | string
     character?: XOR<CharactersRelationFilter, CharactersWhereInput>
@@ -5362,7 +5362,7 @@ export namespace Prisma {
   export type EquipsOrderByWithRelationInput = {
     equipId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     character?: CharactersOrderByWithRelationInput
@@ -5374,7 +5374,7 @@ export namespace Prisma {
     AND?: EquipsWhereInput | EquipsWhereInput[]
     OR?: EquipsWhereInput[]
     NOT?: EquipsWhereInput | EquipsWhereInput[]
-    itemCode?: IntFilter<"Equips"> | number
+    ItemCode?: IntFilter<"Equips"> | number
     createdAt?: DateTimeFilter<"Equips"> | Date | string
     updatedAt?: DateTimeFilter<"Equips"> | Date | string
     character?: XOR<CharactersRelationFilter, CharactersWhereInput>
@@ -5383,7 +5383,7 @@ export namespace Prisma {
   export type EquipsOrderByWithAggregationInput = {
     equipId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EquipsCountOrderByAggregateInput
@@ -5399,7 +5399,7 @@ export namespace Prisma {
     NOT?: EquipsScalarWhereWithAggregatesInput | EquipsScalarWhereWithAggregatesInput[]
     equipId?: IntWithAggregatesFilter<"Equips"> | number
     CharacterId?: IntWithAggregatesFilter<"Equips"> | number
-    itemCode?: IntWithAggregatesFilter<"Equips"> | number
+    ItemCode?: IntWithAggregatesFilter<"Equips"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Equips"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Equips"> | Date | string
   }
@@ -5550,7 +5550,7 @@ export namespace Prisma {
   }
 
   export type InventorysCreateInput = {
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
     character: CharactersCreateNestedOneWithoutInventoryInput
@@ -5559,13 +5559,13 @@ export namespace Prisma {
   export type InventorysUncheckedCreateInput = {
     inventoryId?: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type InventorysUpdateInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     character?: CharactersUpdateOneRequiredWithoutInventoryNestedInput
@@ -5574,7 +5574,7 @@ export namespace Prisma {
   export type InventorysUncheckedUpdateInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
     CharacterId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5582,13 +5582,13 @@ export namespace Prisma {
   export type InventorysCreateManyInput = {
     inventoryId?: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type InventorysUpdateManyMutationInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5596,13 +5596,13 @@ export namespace Prisma {
   export type InventorysUncheckedUpdateManyInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
     CharacterId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EquipsCreateInput = {
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
     character: CharactersCreateNestedOneWithoutEquipInput
@@ -5611,13 +5611,13 @@ export namespace Prisma {
   export type EquipsUncheckedCreateInput = {
     equipId?: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type EquipsUpdateInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     character?: CharactersUpdateOneRequiredWithoutEquipNestedInput
@@ -5626,7 +5626,7 @@ export namespace Prisma {
   export type EquipsUncheckedUpdateInput = {
     equipId?: IntFieldUpdateOperationsInput | number
     CharacterId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5634,13 +5634,13 @@ export namespace Prisma {
   export type EquipsCreateManyInput = {
     equipId?: number
     CharacterId: number
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type EquipsUpdateManyMutationInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5648,7 +5648,7 @@ export namespace Prisma {
   export type EquipsUncheckedUpdateManyInput = {
     equipId?: IntFieldUpdateOperationsInput | number
     CharacterId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5853,7 +5853,7 @@ export namespace Prisma {
   export type InventorysCountOrderByAggregateInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5861,13 +5861,13 @@ export namespace Prisma {
   export type InventorysAvgOrderByAggregateInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
   }
 
   export type InventorysMaxOrderByAggregateInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5875,7 +5875,7 @@ export namespace Prisma {
   export type InventorysMinOrderByAggregateInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5883,13 +5883,13 @@ export namespace Prisma {
   export type InventorysSumOrderByAggregateInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
   }
 
   export type EquipsCountOrderByAggregateInput = {
     equipId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5897,13 +5897,13 @@ export namespace Prisma {
   export type EquipsAvgOrderByAggregateInput = {
     equipId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
   }
 
   export type EquipsMaxOrderByAggregateInput = {
     equipId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5911,7 +5911,7 @@ export namespace Prisma {
   export type EquipsMinOrderByAggregateInput = {
     equipId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5919,7 +5919,7 @@ export namespace Prisma {
   export type EquipsSumOrderByAggregateInput = {
     equipId?: SortOrder
     CharacterId?: SortOrder
-    itemCode?: SortOrder
+    ItemCode?: SortOrder
   }
 
   export type CharactersCreateNestedManyWithoutUserInput = {
@@ -6266,14 +6266,14 @@ export namespace Prisma {
   }
 
   export type InventorysCreateWithoutCharacterInput = {
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type InventorysUncheckedCreateWithoutCharacterInput = {
     inventoryId?: number
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6284,14 +6284,14 @@ export namespace Prisma {
   }
 
   export type EquipsCreateWithoutCharacterInput = {
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type EquipsUncheckedCreateWithoutCharacterInput = {
     equipId?: number
-    itemCode: number
+    ItemCode: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6341,14 +6341,14 @@ export namespace Prisma {
   }
 
   export type InventorysUpdateWithoutCharacterInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InventorysUncheckedUpdateWithoutCharacterInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6365,14 +6365,14 @@ export namespace Prisma {
   }
 
   export type EquipsUpdateWithoutCharacterInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EquipsUncheckedUpdateWithoutCharacterInput = {
     equipId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
