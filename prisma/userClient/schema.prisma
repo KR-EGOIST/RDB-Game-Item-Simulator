@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./userClient"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("USER_DATABASE_URL")
+}
+
+model Users {
+  userId   Int    @id @default(autoincrement()) @map("user_id")
+  name     String @map("name")
+  id       String @unique @map("id")
+  password String @map("password")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  character Characters[]
+
+  @@map("Users")
+}
+
+model Characters {
+  characterId Int    @id @default(autoincrement()) @map("character_id")
+  UserId      Int    @map("user_id")
+  name        String @unique @map("name")
+  health      Int    @default(500) @map("health")
+  power       Int    @default(100) @map("power")
+  money       Int    @default(10000) @map("money")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user      Users       @relation(fields: [UserId], references: [userId], onDelete: Cascade)
+  inventory Inventorys?
+  equip     Equips?
+
+  @@map("Characters")
+}
+
+model Inventorys {
+  inventoryId Int @id @default(autoincrement()) @map("inventory_id")
+  CharacterId Int @unique @map("character_id")
+  itemCode    Int @map("item_code")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  character Characters @relation(fields: [CharacterId], references: [characterId], onDelete: Cascade)
+
+  @@map("Inventorys")
+}
+
+model Equips {
+  equipId     Int @id @default(autoincrement()) @map("equip_id")
+  CharacterId Int @unique @map("character_id")
+  itemCode    Int @map("item_code")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  character Characters @relation(fields: [CharacterId], references: [characterId], onDelete: Cascade)
+
+  @@map("Equips")
+}

@@ -2,7 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import { prisma } from '../utils/prisma/index.js';
+import { userPrisma } from '../utils/prisma/userClient.js';
 
 dotenv.config({ path: './.env' });
 const router = express.Router();
@@ -12,7 +12,7 @@ router.post('/sign-up', async (req, res, next) => {
   try {
     const { name, id, password, passwordCK } = req.body;
 
-    const isExistUser = await prisma.users.findFirst({
+    const isExistUser = await userPrisma.users.findFirst({
       where: {
         id: id,
       },
@@ -61,7 +61,7 @@ router.post('/sign-up', async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Users 테이블에 사용자를 추가합니다.
-    await prisma.users.create({
+    await userPrisma.users.create({
       data: {
         name,
         id,
@@ -69,7 +69,7 @@ router.post('/sign-up', async (req, res, next) => {
       },
     });
 
-    const user = await prisma.users.findFirst({
+    const user = await userPrisma.users.findFirst({
       where: {
         id: id,
       },
@@ -90,7 +90,7 @@ router.post('/sign-up', async (req, res, next) => {
 /** 로그인 API **/
 router.post('/sign-in', async (req, res, next) => {
   const { id, password } = req.body;
-  const user = await prisma.users.findFirst({
+  const user = await userPrisma.users.findFirst({
     where: {
       id: id,
     },
