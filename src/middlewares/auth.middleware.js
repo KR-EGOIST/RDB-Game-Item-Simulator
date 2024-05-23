@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import { prisma } from '../utils/prisma/index.js';
+import { userPrisma } from '../utils/prisma/userClient.js';
 
 dotenv.config({ path: './.env' });
 
@@ -17,7 +17,7 @@ export default async function (req, res, next) {
     const decodedToken = jwt.verify(token, process.env.SESSION_SECRET_KEY);
     const userId = decodedToken.userId;
 
-    const user = await prisma.users.findFirst({
+    const user = await userPrisma.users.findFirst({
       where: { userId: +userId },
     });
     if (!user) {
