@@ -2100,8 +2100,8 @@ export namespace Prisma {
   export type ItemStatsGroupByOutputType = {
     itemStatId: number
     ItemCode: number
-    health: number | null
-    power: number | null
+    health: number
+    power: number
     createdAt: Date
     updatedAt: Date
     _count: ItemStatsCountAggregateOutputType | null
@@ -2158,8 +2158,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       itemStatId: number
       ItemCode: number
-      health: number | null
-      power: number | null
+      health: number
+      power: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["itemStats"]>
@@ -2921,14 +2921,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
   /**
    * Field references 
    */
@@ -3028,8 +3020,8 @@ export namespace Prisma {
     NOT?: ItemStatsWhereInput | ItemStatsWhereInput[]
     itemStatId?: IntFilter<"ItemStats"> | number
     ItemCode?: IntFilter<"ItemStats"> | number
-    health?: IntNullableFilter<"ItemStats"> | number | null
-    power?: IntNullableFilter<"ItemStats"> | number | null
+    health?: IntFilter<"ItemStats"> | number
+    power?: IntFilter<"ItemStats"> | number
     createdAt?: DateTimeFilter<"ItemStats"> | Date | string
     updatedAt?: DateTimeFilter<"ItemStats"> | Date | string
     item?: XOR<ItemsRelationFilter, ItemsWhereInput>
@@ -3038,8 +3030,8 @@ export namespace Prisma {
   export type ItemStatsOrderByWithRelationInput = {
     itemStatId?: SortOrder
     ItemCode?: SortOrder
-    health?: SortOrderInput | SortOrder
-    power?: SortOrderInput | SortOrder
+    health?: SortOrder
+    power?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     item?: ItemsOrderByWithRelationInput
@@ -3051,8 +3043,8 @@ export namespace Prisma {
     AND?: ItemStatsWhereInput | ItemStatsWhereInput[]
     OR?: ItemStatsWhereInput[]
     NOT?: ItemStatsWhereInput | ItemStatsWhereInput[]
-    health?: IntNullableFilter<"ItemStats"> | number | null
-    power?: IntNullableFilter<"ItemStats"> | number | null
+    health?: IntFilter<"ItemStats"> | number
+    power?: IntFilter<"ItemStats"> | number
     createdAt?: DateTimeFilter<"ItemStats"> | Date | string
     updatedAt?: DateTimeFilter<"ItemStats"> | Date | string
     item?: XOR<ItemsRelationFilter, ItemsWhereInput>
@@ -3061,8 +3053,8 @@ export namespace Prisma {
   export type ItemStatsOrderByWithAggregationInput = {
     itemStatId?: SortOrder
     ItemCode?: SortOrder
-    health?: SortOrderInput | SortOrder
-    power?: SortOrderInput | SortOrder
+    health?: SortOrder
+    power?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ItemStatsCountOrderByAggregateInput
@@ -3078,8 +3070,8 @@ export namespace Prisma {
     NOT?: ItemStatsScalarWhereWithAggregatesInput | ItemStatsScalarWhereWithAggregatesInput[]
     itemStatId?: IntWithAggregatesFilter<"ItemStats"> | number
     ItemCode?: IntWithAggregatesFilter<"ItemStats"> | number
-    health?: IntNullableWithAggregatesFilter<"ItemStats"> | number | null
-    power?: IntNullableWithAggregatesFilter<"ItemStats"> | number | null
+    health?: IntWithAggregatesFilter<"ItemStats"> | number
+    power?: IntWithAggregatesFilter<"ItemStats"> | number
     createdAt?: DateTimeWithAggregatesFilter<"ItemStats"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ItemStats"> | Date | string
   }
@@ -3142,8 +3134,8 @@ export namespace Prisma {
   }
 
   export type ItemStatsCreateInput = {
-    health?: number | null
-    power?: number | null
+    health?: number
+    power?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     item: ItemsCreateNestedOneWithoutItemStatInput
@@ -3152,15 +3144,15 @@ export namespace Prisma {
   export type ItemStatsUncheckedCreateInput = {
     itemStatId?: number
     ItemCode: number
-    health?: number | null
-    power?: number | null
+    health?: number
+    power?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ItemStatsUpdateInput = {
-    health?: NullableIntFieldUpdateOperationsInput | number | null
-    power?: NullableIntFieldUpdateOperationsInput | number | null
+    health?: IntFieldUpdateOperationsInput | number
+    power?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     item?: ItemsUpdateOneRequiredWithoutItemStatNestedInput
@@ -3169,8 +3161,8 @@ export namespace Prisma {
   export type ItemStatsUncheckedUpdateInput = {
     itemStatId?: IntFieldUpdateOperationsInput | number
     ItemCode?: IntFieldUpdateOperationsInput | number
-    health?: NullableIntFieldUpdateOperationsInput | number | null
-    power?: NullableIntFieldUpdateOperationsInput | number | null
+    health?: IntFieldUpdateOperationsInput | number
+    power?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3178,15 +3170,15 @@ export namespace Prisma {
   export type ItemStatsCreateManyInput = {
     itemStatId?: number
     ItemCode: number
-    health?: number | null
-    power?: number | null
+    health?: number
+    power?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ItemStatsUpdateManyMutationInput = {
-    health?: NullableIntFieldUpdateOperationsInput | number | null
-    power?: NullableIntFieldUpdateOperationsInput | number | null
+    health?: IntFieldUpdateOperationsInput | number
+    power?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3194,8 +3186,8 @@ export namespace Prisma {
   export type ItemStatsUncheckedUpdateManyInput = {
     itemStatId?: IntFieldUpdateOperationsInput | number
     ItemCode?: IntFieldUpdateOperationsInput | number
-    health?: NullableIntFieldUpdateOperationsInput | number | null
-    power?: NullableIntFieldUpdateOperationsInput | number | null
+    health?: IntFieldUpdateOperationsInput | number
+    power?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3322,25 +3314,9 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type ItemsRelationFilter = {
     is?: ItemsWhereInput
     isNot?: ItemsWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type ItemStatsCountOrderByAggregateInput = {
@@ -3382,22 +3358,6 @@ export namespace Prisma {
     ItemCode?: SortOrder
     health?: SortOrder
     power?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type ItemStatsCreateNestedOneWithoutItemInput = {
@@ -3452,14 +3412,6 @@ export namespace Prisma {
     create?: XOR<ItemsCreateWithoutItemStatInput, ItemsUncheckedCreateWithoutItemStatInput>
     connectOrCreate?: ItemsCreateOrConnectWithoutItemStatInput
     connect?: ItemsWhereUniqueInput
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type ItemsUpdateOneRequiredWithoutItemStatNestedInput = {
@@ -3564,55 +3516,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type ItemStatsCreateWithoutItemInput = {
-    health?: number | null
-    power?: number | null
+    health?: number
+    power?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ItemStatsUncheckedCreateWithoutItemInput = {
     itemStatId?: number
-    health?: number | null
-    power?: number | null
+    health?: number
+    power?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3634,16 +3548,16 @@ export namespace Prisma {
   }
 
   export type ItemStatsUpdateWithoutItemInput = {
-    health?: NullableIntFieldUpdateOperationsInput | number | null
-    power?: NullableIntFieldUpdateOperationsInput | number | null
+    health?: IntFieldUpdateOperationsInput | number
+    power?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ItemStatsUncheckedUpdateWithoutItemInput = {
     itemStatId?: IntFieldUpdateOperationsInput | number
-    health?: NullableIntFieldUpdateOperationsInput | number | null
-    power?: NullableIntFieldUpdateOperationsInput | number | null
+    health?: IntFieldUpdateOperationsInput | number
+    power?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

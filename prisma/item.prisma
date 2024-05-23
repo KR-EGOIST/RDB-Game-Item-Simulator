@@ -24,8 +24,8 @@ model Items {
 model ItemStats {
   itemStatId    Int         @id @default(autoincrement()) @map("item_stat_id")
   ItemCode      Int         @unique @map("item_code")
-  health        Int?        @map("health")
-  power         Int?        @map("power")
+  health        Int         @default(0) @map("health")
+  power         Int         @default(0) @map("power")
 
   createdAt      DateTime    @default(now()) @map("created_at")
   updatedAt      DateTime    @updatedAt @map("updated_at")
