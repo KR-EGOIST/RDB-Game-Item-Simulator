@@ -3,7 +3,7 @@
 
 ### ERD 다이어그램
 ![user](https://github.com/KR-EGOIST/RDB-Game-Item-Simulator/assets/54177070/e223ab9c-c119-4445-9f2f-5bf54a1df95e)
-![Untitled (1)](https://github.com/KR-EGOIST/RDB-Game-Item-Simulator/assets/54177070/b9e97e3d-9b93-4f4a-92a3-b30c93ecbc0d)
+![item](https://github.com/KR-EGOIST/RDB-Game-Item-Simulator/assets/54177070/af4e747f-41f7-4d3f-aba2-0667897e09ac)
 
 
 ### 1. **암호화 방식**
