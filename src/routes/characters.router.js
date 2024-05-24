@@ -197,6 +197,59 @@ router.get(
         message: '존재하지 않는 캐릭터입니다.',
       });
     }
+
+    const findItemCode = await userPrisma.inventorys.findMany({
+      where: {
+        CharacterId: +characterId,
+      },
+      select: {
+        ItemCode: true,
+      },
+      orderBy: {
+        ItemCode: 'asc',
+      },
+    });
+
+    const inventoryItem = findItemCode.map(({ ItemCode }) => ItemCode);
+    const item = await itemPrisma.items.findMany({
+      where: {
+        itemCode: {
+          in: inventoryItem,
+        },
+      },
+      select: {
+        itemCode: true,
+        itemName: true,
+      },
+      orderBy: {
+        itemCode: 'asc',
+      },
+    });
+
+    const inventory = await userPrisma.inventorys.findMany({
+      where: {
+        CharacterId: +characterId,
+      },
+      select: {
+        ItemCode: true,
+        count: true,
+      },
+      orderBy: {
+        ItemCode: 'asc',
+      },
+    });
+
+    const data = [];
+    for (let i = 0; i < inventory.length; i++) {
+      const temp = {
+        itemCode: item[i].itemCode,
+        itemName: item[i].itemName,
+        count: inventory[i].count,
+      };
+      data.push(temp);
+    }
+
+    return res.status(200).json({ data: data });
   }
 );
 
