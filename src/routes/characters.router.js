@@ -493,4 +493,87 @@ router.patch(
   }
 );
 
+/* 캐릭터가 장착한 아이템 목록 조회 API */
+router.get('/characters/:characterId/equip', async (req, res, next) => {
+  const { characterId } = req.params;
+
+  const equip = await userPrisma.equips.findMany({
+    where: {
+      CharacterId: +characterId,
+    },
+    select: {
+      ItemCode: true,
+    },
+    orderBy: {
+      ItemCode: 'asc',
+    },
+  });
+
+  const data = await itemPrisma.items.findMany({
+    where: {
+      itemCode: {
+        in: equip.map(({ ItemCode }) => ItemCode),
+      },
+    },
+    select: {
+      itemCode: true,
+      itemName: true,
+    },
+    orderBy: {
+      itemCode: 'asc',
+    },
+  });
+
+  return res.status(200).json({ data: data });
+});
+
+/* 게임 머니를 버는 API */
+router.patch(
+  '/characters/:characterId/showmethemoney',
+  authMiddleware,
+  async (req, res, next) => {
+    const { userId } = req.user;
+    const { characterId } = req.params;
+
+    const character = await userPrisma.characters.findFirst({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+    });
+
+    if (!character) {
+      return res.status(404).json({
+        message: '존재하지 않는 캐릭터입니다.',
+      });
+    }
+
+    await userPrisma.characters.update({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+      data: {
+        money: character.money + 100,
+      },
+    });
+
+    const data = await userPrisma.characters.findFirst({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+      select: {
+        name: true,
+        money: true,
+      },
+    });
+
+    return res.status(200).json({
+      message: '게임 머니를 100원 얻었습니다.',
+      data: data,
+    });
+  }
+);
+
 export default router;
