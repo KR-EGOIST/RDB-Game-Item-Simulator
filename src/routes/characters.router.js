@@ -198,7 +198,7 @@ router.get(
       });
     }
 
-    const findItemCode = await userPrisma.inventorys.findMany({
+    const findInvenItem = await userPrisma.inventorys.findMany({
       where: {
         CharacterId: +characterId,
       },
@@ -210,7 +210,7 @@ router.get(
       },
     });
 
-    const inventoryItem = findItemCode.map(({ ItemCode }) => ItemCode);
+    const inventoryItem = findInvenItem.map(({ ItemCode }) => ItemCode);
     const item = await itemPrisma.items.findMany({
       where: {
         itemCode: {
@@ -250,6 +250,135 @@ router.get(
     }
 
     return res.status(200).json({ data: data });
+  }
+);
+
+/* 아이템 장착 API */
+router.post(
+  '/characters/:characterId/equip',
+  authMiddleware,
+  async (req, res, next) => {
+    const { userId } = req.user;
+    const { characterId } = req.params;
+    const { item_code } = req.body;
+
+    const character = await userPrisma.characters.findFirst({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+    });
+
+    if (!character) {
+      return res.status(404).json({
+        message: '존재하지 않는 캐릭터입니다.',
+      });
+    }
+
+    const inven = await userPrisma.inventorys.findFirst({
+      where: {
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+    });
+
+    if (!inven) {
+      return res.status(404).json({
+        message: `인벤토리에 ItemCode : ${item_code} 아이템은 없습니다.`,
+      });
+    }
+
+    const findEquipItem = await userPrisma.equips.findFirst({
+      where: {
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+    });
+    if (findEquipItem) {
+      return res.status(409).json({
+        message: '이미 장착한 아이템입니다.',
+      });
+    }
+
+    await userPrisma.equips.create({
+      data: {
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+    });
+
+    await userPrisma.inventorys.update({
+      where: {
+        inventoryId: inven.inventoryId,
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+      data: {
+        count: inven.count - 1,
+      },
+    });
+
+    if (inven.count === 0) {
+      await userPrisma.inventorys.delete({
+        where: {
+          inventoryId: inven.inventoryId,
+          CharacterId: +characterId,
+          ItemCode: item_code,
+        },
+      });
+    }
+
+    const equipItem = await itemPrisma.itemStats.findFirst({
+      where: {
+        ItemCode: item_code,
+      },
+    });
+
+    if (equipItem.health) {
+      await userPrisma.characters.update({
+        where: {
+          characterId: +characterId,
+          UserId: +userId,
+        },
+        data: {
+          health: character.health + equipItem.health,
+        },
+      });
+    }
+
+    if (equipItem.power) {
+      await userPrisma.characters.update({
+        where: {
+          characterId: +characterId,
+          UserId: +userId,
+        },
+        data: {
+          power: character.power + equipItem.power,
+        },
+      });
+    }
+
+    const data = await userPrisma.characters.findFirst({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+      select: {
+        name: true,
+        health: true,
+        power: true,
+        equip: {
+          select: {
+            ItemCode: true,
+          },
+        },
+      },
+    });
+
+    return res.status(200).json({
+      message: '아이템을 장착했습니다.',
+      data: data,
+    });
   }
 );
 
