@@ -382,4 +382,115 @@ router.post(
   }
 );
 
+/* 아이템 탈착 API */
+router.patch(
+  '/characters/:characterId/equip',
+  authMiddleware,
+  async (req, res, next) => {
+    const { userId } = req.user;
+    const { characterId } = req.params;
+    const { item_code } = req.body;
+
+    const character = await userPrisma.characters.findFirst({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+    });
+
+    if (!character) {
+      return res.status(404).json({
+        message: '존재하지 않는 캐릭터입니다.',
+      });
+    }
+
+    const findEquipItem = await userPrisma.equips.findFirst({
+      where: {
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+    });
+
+    if (!findEquipItem) {
+      return res.status(404).json({
+        message: `ItemCode : ${item_code} 아이템을 장착하지 않았습니다.`,
+      });
+    }
+
+    await userPrisma.equips.delete({
+      where: {
+        equipId: findEquipItem.equipId,
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+    });
+
+    const equipItem = await itemPrisma.itemStats.findFirst({
+      where: {
+        ItemCode: item_code,
+      },
+    });
+
+    await userPrisma.characters.update({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+      data: {
+        health: character.health - equipItem.health,
+        power: character.power - equipItem.power,
+      },
+    });
+
+    const inven = await userPrisma.inventorys.findFirst({
+      where: {
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+    });
+
+    if (inven) {
+      await userPrisma.inventorys.update({
+        where: {
+          inventoryId: inven.inventoryId,
+          CharacterId: +characterId,
+          ItemCode: item_code,
+        },
+        data: {
+          count: inven.count + 1,
+        },
+      });
+    } else {
+      await userPrisma.inventorys.create({
+        data: {
+          CharacterId: +characterId,
+          ItemCode: item_code,
+          count: 1,
+        },
+      });
+    }
+
+    const data = await userPrisma.characters.findFirst({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+      select: {
+        name: true,
+        health: true,
+        power: true,
+        equip: {
+          select: {
+            ItemCode: true,
+          },
+        },
+      },
+    });
+
+    return res
+      .status(200)
+      .json({ message: '아이템을 해제했습니다.', data: data });
+  }
+);
+
 export default router;
