@@ -1,6 +1,9 @@
 ### [API 명세서](https://industrious-lasagna-717.notion.site/Node-js-API-fd72562f94f24d9cb4e50847729ad95a?pvs=4)
 ### [요구사항](https://teamsparta.notion.site/Node-js-18937b864baa453e9674dadee151e369)
 
+### ERD 다이어그램
+[사진](https://file.notion.so/f/f/6e9d7281-dea7-40bf-8dd8-fbf82ba7560a/58ed3bf4-00d5-4fc2-ac6b-e1d5d4155751/Untitled.png?id=13090df6-5c71-42c3-9d97-c69fd63bf5b0&table=block&spaceId=6e9d7281-dea7-40bf-8dd8-fbf82ba7560a&expirationTimestamp=1716624000000&signature=MLtmxk-cmrE50IwfDrQgUY1PT7Vw0m3ZB_yUlz-gu00&downloadName=Untitled.png)
+
 ### 1. **암호화 방식**
     - 비밀번호를 DB에 저장할 때 Hash를 이용했는데, Hash는 단방향 암호화와 양방향 암호화 중 어떤 암호화 방식에 해당할까요?
     - 비밀번호를 그냥 저장하지 않고 Hash 한 값을 저장 했을 때의 좋은 점은 무엇인가요?
