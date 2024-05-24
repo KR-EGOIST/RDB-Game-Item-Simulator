@@ -6,6 +6,7 @@ import authMiddleware from '../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
+/* 캐릭터 생성 API */
 router.post('/characters', authMiddleware, async (req, res, next) => {
   try {
     const { userId } = req.user;
@@ -53,6 +54,7 @@ router.post('/characters', authMiddleware, async (req, res, next) => {
   }
 });
 
+/* 캐릭터 삭제 API */
 router.delete(
   '/characters/:characterId',
   authMiddleware,
@@ -91,6 +93,7 @@ router.delete(
   }
 );
 
+/* 캐릭터 상세 조회 API */
 router.get('/characters/:characterId', async (req, res, next) => {
   const { characterId } = req.params;
   const { authorization } = req.cookies;
@@ -173,5 +176,28 @@ router.get('/characters/:characterId', async (req, res, next) => {
     }
   }
 });
+
+/* 캐릭터가 보유한 인벤토리 내 아이템 목록 조회 API */
+router.get(
+  '/characters/:characterId/inventorys',
+  authMiddleware,
+  async (req, res, next) => {
+    const { userId } = req.user;
+    const { characterId } = req.params;
+
+    const character = await userPrisma.characters.findFirst({
+      where: {
+        characterId: +characterId,
+        UserId: +userId,
+      },
+    });
+
+    if (!character) {
+      return res.status(404).json({
+        message: '존재하지 않는 캐릭터입니다.',
+      });
+    }
+  }
+);
 
 export default router;

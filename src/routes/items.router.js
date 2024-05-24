@@ -3,6 +3,7 @@ import { itemPrisma } from '../utils/prisma/itemClient.js';
 
 const router = express.Router();
 
+/* 아이템 생성 API */
 router.post('/items', async (req, res, next) => {
   try {
     const { item_name, item_stat, item_price } = req.body;
@@ -69,6 +70,7 @@ router.post('/items', async (req, res, next) => {
   }
 });
 
+/* 아이템 수정 API */
 router.patch('/items/:itemCode', async (req, res, next) => {
   const { itemCode } = req.params;
   const { item_name, item_stat } = req.body;
@@ -124,6 +126,7 @@ router.patch('/items/:itemCode', async (req, res, next) => {
   return res.status(200).json({ data: data });
 });
 
+/* 아이템 목록 조회 API */
 router.get('/items', async (req, res, next) => {
   const items = await itemPrisma.items.findMany({
     select: {
@@ -139,6 +142,7 @@ router.get('/items', async (req, res, next) => {
   return res.status(200).json({ data: items });
 });
 
+/* 아이템 상세 조회 API */
 router.get('/items/:itemCode', async (req, res, next) => {
   const { itemCode } = req.params;
 

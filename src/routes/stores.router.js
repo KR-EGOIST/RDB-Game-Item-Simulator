@@ -6,6 +6,7 @@ import { compareSync } from 'bcrypt';
 
 const router = express.Router();
 
+/* 아이템 구입 API  */
 router.post(
   '/characters/:characterId/stores',
   authMiddleware,
@@ -46,7 +47,7 @@ router.post(
       }
 
       if (totalPrice > character.money) {
-        return res.status(400).json({
+        return res.status(401).json({
           message: '잔액이 부족합니다.',
         });
       }
@@ -115,6 +116,7 @@ router.post(
   }
 );
 
+/* 아이템 판매 API */
 router.patch(
   '/characters/:characterId/stores',
   authMiddleware,
