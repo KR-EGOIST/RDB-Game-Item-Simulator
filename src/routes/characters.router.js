@@ -96,7 +96,7 @@ router.delete(
 /* 캐릭터 상세 조회 API */
 router.get('/characters/:characterId', async (req, res, next) => {
   const { characterId } = req.params;
-  const { authorization } = req.cookies;
+  const authorization = req.header('authorization');
 
   // 로그인 하지 않으면
   if (!authorization) {
