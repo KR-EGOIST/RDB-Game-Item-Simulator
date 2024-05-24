@@ -71,13 +71,13 @@ router.post('/items', async (req, res, next) => {
 });
 
 /* 아이템 수정 API */
-router.patch('/items/:itemCode', async (req, res, next) => {
-  const { itemCode } = req.params;
+router.patch('/items/:itemcode', async (req, res, next) => {
+  const { itemCode: itemcode } = req.params;
   const { item_name, item_stat } = req.body;
 
   const item = await itemPrisma.items.findFirst({
     where: {
-      itemCode: +itemCode,
+      itemCode: +itemcode,
     },
   });
 
@@ -89,7 +89,7 @@ router.patch('/items/:itemCode', async (req, res, next) => {
 
   await itemPrisma.items.update({
     where: {
-      itemCode: +itemCode,
+      itemCode: +itemcode,
     },
     data: {
       itemName: item_name,
@@ -98,7 +98,7 @@ router.patch('/items/:itemCode', async (req, res, next) => {
 
   await itemPrisma.itemStats.update({
     where: {
-      ItemCode: +itemCode,
+      ItemCode: +itemcode,
     },
     data: {
       health: item_stat.health,
@@ -108,7 +108,7 @@ router.patch('/items/:itemCode', async (req, res, next) => {
 
   const data = await itemPrisma.items.findFirst({
     where: {
-      itemCode: +itemCode,
+      itemCode: +itemcode,
     },
     select: {
       itemCode: true,
@@ -143,12 +143,12 @@ router.get('/items', async (req, res, next) => {
 });
 
 /* 아이템 상세 조회 API */
-router.get('/items/:itemCode', async (req, res, next) => {
-  const { itemCode } = req.params;
+router.get('/items/:itemcode', async (req, res, next) => {
+  const { itemCode: itemcode } = req.params;
 
   const item = await itemPrisma.items.findFirst({
     where: {
-      itemCode: +itemCode,
+      itemCode: +itemcode,
     },
     select: {
       itemCode: true,

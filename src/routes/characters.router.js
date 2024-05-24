@@ -497,6 +497,12 @@ router.patch(
 router.get('/characters/:characterId/equip', async (req, res, next) => {
   const { characterId } = req.params;
 
+  const character = await userPrisma.characters.findFirst({
+    where: {
+      characterId: +characterId,
+    },
+  });
+
   const equip = await userPrisma.equips.findMany({
     where: {
       CharacterId: +characterId,
@@ -524,7 +530,9 @@ router.get('/characters/:characterId/equip', async (req, res, next) => {
     },
   });
 
-  return res.status(200).json({ data: data });
+  return res
+    .status(200)
+    .json({ message: `${character.name}의 장비창`, data: data });
 });
 
 /* 게임 머니를 버는 API */
