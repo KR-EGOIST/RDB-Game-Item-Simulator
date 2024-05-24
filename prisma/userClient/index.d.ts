@@ -1147,6 +1147,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type CharactersCountOutputType
+   */
+
+  export type CharactersCountOutputType = {
+    inventory: number
+    equip: number
+  }
+
+  export type CharactersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    inventory?: boolean | CharactersCountOutputTypeCountInventoryArgs
+    equip?: boolean | CharactersCountOutputTypeCountEquipArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CharactersCountOutputType without action
+   */
+  export type CharactersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CharactersCountOutputType
+     */
+    select?: CharactersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CharactersCountOutputType without action
+   */
+  export type CharactersCountOutputTypeCountInventoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InventorysWhereInput
+  }
+
+  /**
+   * CharactersCountOutputType without action
+   */
+  export type CharactersCountOutputTypeCountEquipArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EquipsWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -2363,6 +2403,7 @@ export namespace Prisma {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     inventory?: boolean | Characters$inventoryArgs<ExtArgs>
     equip?: boolean | Characters$equipArgs<ExtArgs>
+    _count?: boolean | CharactersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["characters"]>
 
   export type CharactersSelectScalar = {
@@ -2381,6 +2422,7 @@ export namespace Prisma {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     inventory?: boolean | Characters$inventoryArgs<ExtArgs>
     equip?: boolean | Characters$equipArgs<ExtArgs>
+    _count?: boolean | CharactersCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
@@ -2388,8 +2430,8 @@ export namespace Prisma {
     name: "Characters"
     objects: {
       user: Prisma.$UsersPayload<ExtArgs>
-      inventory: Prisma.$InventorysPayload<ExtArgs> | null
-      equip: Prisma.$EquipsPayload<ExtArgs> | null
+      inventory: Prisma.$InventorysPayload<ExtArgs>[]
+      equip: Prisma.$EquipsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       characterId: number
@@ -2767,9 +2809,9 @@ export namespace Prisma {
 
     user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    inventory<T extends Characters$inventoryArgs<ExtArgs> = {}>(args?: Subset<T, Characters$inventoryArgs<ExtArgs>>): Prisma__InventorysClient<$Result.GetResult<Prisma.$InventorysPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    inventory<T extends Characters$inventoryArgs<ExtArgs> = {}>(args?: Subset<T, Characters$inventoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InventorysPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    equip<T extends Characters$equipArgs<ExtArgs> = {}>(args?: Subset<T, Characters$equipArgs<ExtArgs>>): Prisma__EquipsClient<$Result.GetResult<Prisma.$EquipsPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    equip<T extends Characters$equipArgs<ExtArgs> = {}>(args?: Subset<T, Characters$equipArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EquipsPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3118,6 +3160,11 @@ export namespace Prisma {
      */
     include?: InventorysInclude<ExtArgs> | null
     where?: InventorysWhereInput
+    orderBy?: InventorysOrderByWithRelationInput | InventorysOrderByWithRelationInput[]
+    cursor?: InventorysWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InventorysScalarFieldEnum | InventorysScalarFieldEnum[]
   }
 
   /**
@@ -3133,6 +3180,11 @@ export namespace Prisma {
      */
     include?: EquipsInclude<ExtArgs> | null
     where?: EquipsWhereInput
+    orderBy?: EquipsOrderByWithRelationInput | EquipsOrderByWithRelationInput[]
+    cursor?: EquipsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EquipsScalarFieldEnum | EquipsScalarFieldEnum[]
   }
 
   /**
@@ -3166,18 +3218,21 @@ export namespace Prisma {
     inventoryId: number | null
     CharacterId: number | null
     ItemCode: number | null
+    count: number | null
   }
 
   export type InventorysSumAggregateOutputType = {
     inventoryId: number | null
     CharacterId: number | null
     ItemCode: number | null
+    count: number | null
   }
 
   export type InventorysMinAggregateOutputType = {
     inventoryId: number | null
     CharacterId: number | null
     ItemCode: number | null
+    count: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3186,6 +3241,7 @@ export namespace Prisma {
     inventoryId: number | null
     CharacterId: number | null
     ItemCode: number | null
+    count: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3194,6 +3250,7 @@ export namespace Prisma {
     inventoryId: number
     CharacterId: number
     ItemCode: number
+    count: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3204,18 +3261,21 @@ export namespace Prisma {
     inventoryId?: true
     CharacterId?: true
     ItemCode?: true
+    count?: true
   }
 
   export type InventorysSumAggregateInputType = {
     inventoryId?: true
     CharacterId?: true
     ItemCode?: true
+    count?: true
   }
 
   export type InventorysMinAggregateInputType = {
     inventoryId?: true
     CharacterId?: true
     ItemCode?: true
+    count?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3224,6 +3284,7 @@ export namespace Prisma {
     inventoryId?: true
     CharacterId?: true
     ItemCode?: true
+    count?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3232,6 +3293,7 @@ export namespace Prisma {
     inventoryId?: true
     CharacterId?: true
     ItemCode?: true
+    count?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3327,6 +3389,7 @@ export namespace Prisma {
     inventoryId: number
     CharacterId: number
     ItemCode: number
+    count: number
     createdAt: Date
     updatedAt: Date
     _count: InventorysCountAggregateOutputType | null
@@ -3354,6 +3417,7 @@ export namespace Prisma {
     inventoryId?: boolean
     CharacterId?: boolean
     ItemCode?: boolean
+    count?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     character?: boolean | CharactersDefaultArgs<ExtArgs>
@@ -3363,6 +3427,7 @@ export namespace Prisma {
     inventoryId?: boolean
     CharacterId?: boolean
     ItemCode?: boolean
+    count?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -3382,6 +3447,7 @@ export namespace Prisma {
       inventoryId: number
       CharacterId: number
       ItemCode: number
+      count: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["inventorys"]>
@@ -3782,6 +3848,7 @@ export namespace Prisma {
     readonly inventoryId: FieldRef<"Inventorys", 'Int'>
     readonly CharacterId: FieldRef<"Inventorys", 'Int'>
     readonly ItemCode: FieldRef<"Inventorys", 'Int'>
+    readonly count: FieldRef<"Inventorys", 'Int'>
     readonly createdAt: FieldRef<"Inventorys", 'DateTime'>
     readonly updatedAt: FieldRef<"Inventorys", 'DateTime'>
   }
@@ -5088,6 +5155,7 @@ export namespace Prisma {
     inventoryId: 'inventoryId',
     CharacterId: 'CharacterId',
     ItemCode: 'ItemCode',
+    count: 'count',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5225,8 +5293,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Characters"> | Date | string
     updatedAt?: DateTimeFilter<"Characters"> | Date | string
     user?: XOR<UsersRelationFilter, UsersWhereInput>
-    inventory?: XOR<InventorysNullableRelationFilter, InventorysWhereInput> | null
-    equip?: XOR<EquipsNullableRelationFilter, EquipsWhereInput> | null
+    inventory?: InventorysListRelationFilter
+    equip?: EquipsListRelationFilter
   }
 
   export type CharactersOrderByWithRelationInput = {
@@ -5239,8 +5307,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UsersOrderByWithRelationInput
-    inventory?: InventorysOrderByWithRelationInput
-    equip?: EquipsOrderByWithRelationInput
+    inventory?: InventorysOrderByRelationAggregateInput
+    equip?: EquipsOrderByRelationAggregateInput
   }
 
   export type CharactersWhereUniqueInput = Prisma.AtLeast<{
@@ -5256,8 +5324,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Characters"> | Date | string
     updatedAt?: DateTimeFilter<"Characters"> | Date | string
     user?: XOR<UsersRelationFilter, UsersWhereInput>
-    inventory?: XOR<InventorysNullableRelationFilter, InventorysWhereInput> | null
-    equip?: XOR<EquipsNullableRelationFilter, EquipsWhereInput> | null
+    inventory?: InventorysListRelationFilter
+    equip?: EquipsListRelationFilter
   }, "characterId" | "name">
 
   export type CharactersOrderByWithAggregationInput = {
@@ -5297,6 +5365,7 @@ export namespace Prisma {
     inventoryId?: IntFilter<"Inventorys"> | number
     CharacterId?: IntFilter<"Inventorys"> | number
     ItemCode?: IntFilter<"Inventorys"> | number
+    count?: IntFilter<"Inventorys"> | number
     createdAt?: DateTimeFilter<"Inventorys"> | Date | string
     updatedAt?: DateTimeFilter<"Inventorys"> | Date | string
     character?: XOR<CharactersRelationFilter, CharactersWhereInput>
@@ -5306,6 +5375,7 @@ export namespace Prisma {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
     ItemCode?: SortOrder
+    count?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     character?: CharactersOrderByWithRelationInput
@@ -5313,20 +5383,22 @@ export namespace Prisma {
 
   export type InventorysWhereUniqueInput = Prisma.AtLeast<{
     inventoryId?: number
-    CharacterId?: number
     AND?: InventorysWhereInput | InventorysWhereInput[]
     OR?: InventorysWhereInput[]
     NOT?: InventorysWhereInput | InventorysWhereInput[]
+    CharacterId?: IntFilter<"Inventorys"> | number
     ItemCode?: IntFilter<"Inventorys"> | number
+    count?: IntFilter<"Inventorys"> | number
     createdAt?: DateTimeFilter<"Inventorys"> | Date | string
     updatedAt?: DateTimeFilter<"Inventorys"> | Date | string
     character?: XOR<CharactersRelationFilter, CharactersWhereInput>
-  }, "inventoryId" | "CharacterId">
+  }, "inventoryId">
 
   export type InventorysOrderByWithAggregationInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
     ItemCode?: SortOrder
+    count?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: InventorysCountOrderByAggregateInput
@@ -5343,6 +5415,7 @@ export namespace Prisma {
     inventoryId?: IntWithAggregatesFilter<"Inventorys"> | number
     CharacterId?: IntWithAggregatesFilter<"Inventorys"> | number
     ItemCode?: IntWithAggregatesFilter<"Inventorys"> | number
+    count?: IntWithAggregatesFilter<"Inventorys"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Inventorys"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Inventorys"> | Date | string
   }
@@ -5370,15 +5443,15 @@ export namespace Prisma {
 
   export type EquipsWhereUniqueInput = Prisma.AtLeast<{
     equipId?: number
-    CharacterId?: number
     AND?: EquipsWhereInput | EquipsWhereInput[]
     OR?: EquipsWhereInput[]
     NOT?: EquipsWhereInput | EquipsWhereInput[]
+    CharacterId?: IntFilter<"Equips"> | number
     ItemCode?: IntFilter<"Equips"> | number
     createdAt?: DateTimeFilter<"Equips"> | Date | string
     updatedAt?: DateTimeFilter<"Equips"> | Date | string
     character?: XOR<CharactersRelationFilter, CharactersWhereInput>
-  }, "equipId" | "CharacterId">
+  }, "equipId">
 
   export type EquipsOrderByWithAggregationInput = {
     equipId?: SortOrder
@@ -5476,8 +5549,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UsersCreateNestedOneWithoutCharacterInput
-    inventory?: InventorysCreateNestedOneWithoutCharacterInput
-    equip?: EquipsCreateNestedOneWithoutCharacterInput
+    inventory?: InventorysCreateNestedManyWithoutCharacterInput
+    equip?: EquipsCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersUncheckedCreateInput = {
@@ -5489,8 +5562,8 @@ export namespace Prisma {
     money?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    inventory?: InventorysUncheckedCreateNestedOneWithoutCharacterInput
-    equip?: EquipsUncheckedCreateNestedOneWithoutCharacterInput
+    inventory?: InventorysUncheckedCreateNestedManyWithoutCharacterInput
+    equip?: EquipsUncheckedCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersUpdateInput = {
@@ -5501,8 +5574,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutCharacterNestedInput
-    inventory?: InventorysUpdateOneWithoutCharacterNestedInput
-    equip?: EquipsUpdateOneWithoutCharacterNestedInput
+    inventory?: InventorysUpdateManyWithoutCharacterNestedInput
+    equip?: EquipsUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersUncheckedUpdateInput = {
@@ -5514,8 +5587,8 @@ export namespace Prisma {
     money?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventory?: InventorysUncheckedUpdateOneWithoutCharacterNestedInput
-    equip?: EquipsUncheckedUpdateOneWithoutCharacterNestedInput
+    inventory?: InventorysUncheckedUpdateManyWithoutCharacterNestedInput
+    equip?: EquipsUncheckedUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersCreateManyInput = {
@@ -5551,6 +5624,7 @@ export namespace Prisma {
 
   export type InventorysCreateInput = {
     ItemCode: number
+    count: number
     createdAt?: Date | string
     updatedAt?: Date | string
     character: CharactersCreateNestedOneWithoutInventoryInput
@@ -5560,12 +5634,14 @@ export namespace Prisma {
     inventoryId?: number
     CharacterId: number
     ItemCode: number
+    count: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type InventorysUpdateInput = {
     ItemCode?: IntFieldUpdateOperationsInput | number
+    count?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     character?: CharactersUpdateOneRequiredWithoutInventoryNestedInput
@@ -5575,6 +5651,7 @@ export namespace Prisma {
     inventoryId?: IntFieldUpdateOperationsInput | number
     CharacterId?: IntFieldUpdateOperationsInput | number
     ItemCode?: IntFieldUpdateOperationsInput | number
+    count?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5583,12 +5660,14 @@ export namespace Prisma {
     inventoryId?: number
     CharacterId: number
     ItemCode: number
+    count: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type InventorysUpdateManyMutationInput = {
     ItemCode?: IntFieldUpdateOperationsInput | number
+    count?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5597,6 +5676,7 @@ export namespace Prisma {
     inventoryId?: IntFieldUpdateOperationsInput | number
     CharacterId?: IntFieldUpdateOperationsInput | number
     ItemCode?: IntFieldUpdateOperationsInput | number
+    count?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5786,14 +5866,24 @@ export namespace Prisma {
     isNot?: UsersWhereInput
   }
 
-  export type InventorysNullableRelationFilter = {
-    is?: InventorysWhereInput | null
-    isNot?: InventorysWhereInput | null
+  export type InventorysListRelationFilter = {
+    every?: InventorysWhereInput
+    some?: InventorysWhereInput
+    none?: InventorysWhereInput
   }
 
-  export type EquipsNullableRelationFilter = {
-    is?: EquipsWhereInput | null
-    isNot?: EquipsWhereInput | null
+  export type EquipsListRelationFilter = {
+    every?: EquipsWhereInput
+    some?: EquipsWhereInput
+    none?: EquipsWhereInput
+  }
+
+  export type InventorysOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EquipsOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type CharactersCountOrderByAggregateInput = {
@@ -5854,6 +5944,7 @@ export namespace Prisma {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
     ItemCode?: SortOrder
+    count?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5862,12 +5953,14 @@ export namespace Prisma {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
     ItemCode?: SortOrder
+    count?: SortOrder
   }
 
   export type InventorysMaxOrderByAggregateInput = {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
     ItemCode?: SortOrder
+    count?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5876,6 +5969,7 @@ export namespace Prisma {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
     ItemCode?: SortOrder
+    count?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5884,6 +5978,7 @@ export namespace Prisma {
     inventoryId?: SortOrder
     CharacterId?: SortOrder
     ItemCode?: SortOrder
+    count?: SortOrder
   }
 
   export type EquipsCountOrderByAggregateInput = {
@@ -5986,28 +6081,32 @@ export namespace Prisma {
     connect?: UsersWhereUniqueInput
   }
 
-  export type InventorysCreateNestedOneWithoutCharacterInput = {
-    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput
-    connect?: InventorysWhereUniqueInput
+  export type InventorysCreateNestedManyWithoutCharacterInput = {
+    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput> | InventorysCreateWithoutCharacterInput[] | InventorysUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput | InventorysCreateOrConnectWithoutCharacterInput[]
+    createMany?: InventorysCreateManyCharacterInputEnvelope
+    connect?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
   }
 
-  export type EquipsCreateNestedOneWithoutCharacterInput = {
-    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput
-    connect?: EquipsWhereUniqueInput
+  export type EquipsCreateNestedManyWithoutCharacterInput = {
+    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput> | EquipsCreateWithoutCharacterInput[] | EquipsUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput | EquipsCreateOrConnectWithoutCharacterInput[]
+    createMany?: EquipsCreateManyCharacterInputEnvelope
+    connect?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
   }
 
-  export type InventorysUncheckedCreateNestedOneWithoutCharacterInput = {
-    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput
-    connect?: InventorysWhereUniqueInput
+  export type InventorysUncheckedCreateNestedManyWithoutCharacterInput = {
+    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput> | InventorysCreateWithoutCharacterInput[] | InventorysUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput | InventorysCreateOrConnectWithoutCharacterInput[]
+    createMany?: InventorysCreateManyCharacterInputEnvelope
+    connect?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
   }
 
-  export type EquipsUncheckedCreateNestedOneWithoutCharacterInput = {
-    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput
-    connect?: EquipsWhereUniqueInput
+  export type EquipsUncheckedCreateNestedManyWithoutCharacterInput = {
+    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput> | EquipsCreateWithoutCharacterInput[] | EquipsUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput | EquipsCreateOrConnectWithoutCharacterInput[]
+    createMany?: EquipsCreateManyCharacterInputEnvelope
+    connect?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
   }
 
   export type UsersUpdateOneRequiredWithoutCharacterNestedInput = {
@@ -6018,44 +6117,60 @@ export namespace Prisma {
     update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutCharacterInput, UsersUpdateWithoutCharacterInput>, UsersUncheckedUpdateWithoutCharacterInput>
   }
 
-  export type InventorysUpdateOneWithoutCharacterNestedInput = {
-    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput
-    upsert?: InventorysUpsertWithoutCharacterInput
-    disconnect?: InventorysWhereInput | boolean
-    delete?: InventorysWhereInput | boolean
-    connect?: InventorysWhereUniqueInput
-    update?: XOR<XOR<InventorysUpdateToOneWithWhereWithoutCharacterInput, InventorysUpdateWithoutCharacterInput>, InventorysUncheckedUpdateWithoutCharacterInput>
+  export type InventorysUpdateManyWithoutCharacterNestedInput = {
+    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput> | InventorysCreateWithoutCharacterInput[] | InventorysUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput | InventorysCreateOrConnectWithoutCharacterInput[]
+    upsert?: InventorysUpsertWithWhereUniqueWithoutCharacterInput | InventorysUpsertWithWhereUniqueWithoutCharacterInput[]
+    createMany?: InventorysCreateManyCharacterInputEnvelope
+    set?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    disconnect?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    delete?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    connect?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    update?: InventorysUpdateWithWhereUniqueWithoutCharacterInput | InventorysUpdateWithWhereUniqueWithoutCharacterInput[]
+    updateMany?: InventorysUpdateManyWithWhereWithoutCharacterInput | InventorysUpdateManyWithWhereWithoutCharacterInput[]
+    deleteMany?: InventorysScalarWhereInput | InventorysScalarWhereInput[]
   }
 
-  export type EquipsUpdateOneWithoutCharacterNestedInput = {
-    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput
-    upsert?: EquipsUpsertWithoutCharacterInput
-    disconnect?: EquipsWhereInput | boolean
-    delete?: EquipsWhereInput | boolean
-    connect?: EquipsWhereUniqueInput
-    update?: XOR<XOR<EquipsUpdateToOneWithWhereWithoutCharacterInput, EquipsUpdateWithoutCharacterInput>, EquipsUncheckedUpdateWithoutCharacterInput>
+  export type EquipsUpdateManyWithoutCharacterNestedInput = {
+    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput> | EquipsCreateWithoutCharacterInput[] | EquipsUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput | EquipsCreateOrConnectWithoutCharacterInput[]
+    upsert?: EquipsUpsertWithWhereUniqueWithoutCharacterInput | EquipsUpsertWithWhereUniqueWithoutCharacterInput[]
+    createMany?: EquipsCreateManyCharacterInputEnvelope
+    set?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    disconnect?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    delete?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    connect?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    update?: EquipsUpdateWithWhereUniqueWithoutCharacterInput | EquipsUpdateWithWhereUniqueWithoutCharacterInput[]
+    updateMany?: EquipsUpdateManyWithWhereWithoutCharacterInput | EquipsUpdateManyWithWhereWithoutCharacterInput[]
+    deleteMany?: EquipsScalarWhereInput | EquipsScalarWhereInput[]
   }
 
-  export type InventorysUncheckedUpdateOneWithoutCharacterNestedInput = {
-    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput
-    upsert?: InventorysUpsertWithoutCharacterInput
-    disconnect?: InventorysWhereInput | boolean
-    delete?: InventorysWhereInput | boolean
-    connect?: InventorysWhereUniqueInput
-    update?: XOR<XOR<InventorysUpdateToOneWithWhereWithoutCharacterInput, InventorysUpdateWithoutCharacterInput>, InventorysUncheckedUpdateWithoutCharacterInput>
+  export type InventorysUncheckedUpdateManyWithoutCharacterNestedInput = {
+    create?: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput> | InventorysCreateWithoutCharacterInput[] | InventorysUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: InventorysCreateOrConnectWithoutCharacterInput | InventorysCreateOrConnectWithoutCharacterInput[]
+    upsert?: InventorysUpsertWithWhereUniqueWithoutCharacterInput | InventorysUpsertWithWhereUniqueWithoutCharacterInput[]
+    createMany?: InventorysCreateManyCharacterInputEnvelope
+    set?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    disconnect?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    delete?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    connect?: InventorysWhereUniqueInput | InventorysWhereUniqueInput[]
+    update?: InventorysUpdateWithWhereUniqueWithoutCharacterInput | InventorysUpdateWithWhereUniqueWithoutCharacterInput[]
+    updateMany?: InventorysUpdateManyWithWhereWithoutCharacterInput | InventorysUpdateManyWithWhereWithoutCharacterInput[]
+    deleteMany?: InventorysScalarWhereInput | InventorysScalarWhereInput[]
   }
 
-  export type EquipsUncheckedUpdateOneWithoutCharacterNestedInput = {
-    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput>
-    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput
-    upsert?: EquipsUpsertWithoutCharacterInput
-    disconnect?: EquipsWhereInput | boolean
-    delete?: EquipsWhereInput | boolean
-    connect?: EquipsWhereUniqueInput
-    update?: XOR<XOR<EquipsUpdateToOneWithWhereWithoutCharacterInput, EquipsUpdateWithoutCharacterInput>, EquipsUncheckedUpdateWithoutCharacterInput>
+  export type EquipsUncheckedUpdateManyWithoutCharacterNestedInput = {
+    create?: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput> | EquipsCreateWithoutCharacterInput[] | EquipsUncheckedCreateWithoutCharacterInput[]
+    connectOrCreate?: EquipsCreateOrConnectWithoutCharacterInput | EquipsCreateOrConnectWithoutCharacterInput[]
+    upsert?: EquipsUpsertWithWhereUniqueWithoutCharacterInput | EquipsUpsertWithWhereUniqueWithoutCharacterInput[]
+    createMany?: EquipsCreateManyCharacterInputEnvelope
+    set?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    disconnect?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    delete?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    connect?: EquipsWhereUniqueInput | EquipsWhereUniqueInput[]
+    update?: EquipsUpdateWithWhereUniqueWithoutCharacterInput | EquipsUpdateWithWhereUniqueWithoutCharacterInput[]
+    updateMany?: EquipsUpdateManyWithWhereWithoutCharacterInput | EquipsUpdateManyWithWhereWithoutCharacterInput[]
+    deleteMany?: EquipsScalarWhereInput | EquipsScalarWhereInput[]
   }
 
   export type CharactersCreateNestedOneWithoutInventoryInput = {
@@ -6187,8 +6302,8 @@ export namespace Prisma {
     money?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    inventory?: InventorysCreateNestedOneWithoutCharacterInput
-    equip?: EquipsCreateNestedOneWithoutCharacterInput
+    inventory?: InventorysCreateNestedManyWithoutCharacterInput
+    equip?: EquipsCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersUncheckedCreateWithoutUserInput = {
@@ -6199,8 +6314,8 @@ export namespace Prisma {
     money?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    inventory?: InventorysUncheckedCreateNestedOneWithoutCharacterInput
-    equip?: EquipsUncheckedCreateNestedOneWithoutCharacterInput
+    inventory?: InventorysUncheckedCreateNestedManyWithoutCharacterInput
+    equip?: EquipsUncheckedCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersCreateOrConnectWithoutUserInput = {
@@ -6267,6 +6382,7 @@ export namespace Prisma {
 
   export type InventorysCreateWithoutCharacterInput = {
     ItemCode: number
+    count: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6274,6 +6390,7 @@ export namespace Prisma {
   export type InventorysUncheckedCreateWithoutCharacterInput = {
     inventoryId?: number
     ItemCode: number
+    count: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6281,6 +6398,11 @@ export namespace Prisma {
   export type InventorysCreateOrConnectWithoutCharacterInput = {
     where: InventorysWhereUniqueInput
     create: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput>
+  }
+
+  export type InventorysCreateManyCharacterInputEnvelope = {
+    data: InventorysCreateManyCharacterInput | InventorysCreateManyCharacterInput[]
+    skipDuplicates?: boolean
   }
 
   export type EquipsCreateWithoutCharacterInput = {
@@ -6299,6 +6421,11 @@ export namespace Prisma {
   export type EquipsCreateOrConnectWithoutCharacterInput = {
     where: EquipsWhereUniqueInput
     create: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput>
+  }
+
+  export type EquipsCreateManyCharacterInputEnvelope = {
+    data: EquipsCreateManyCharacterInput | EquipsCreateManyCharacterInput[]
+    skipDuplicates?: boolean
   }
 
   export type UsersUpsertWithoutCharacterInput = {
@@ -6329,52 +6456,59 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type InventorysUpsertWithoutCharacterInput = {
+  export type InventorysUpsertWithWhereUniqueWithoutCharacterInput = {
+    where: InventorysWhereUniqueInput
     update: XOR<InventorysUpdateWithoutCharacterInput, InventorysUncheckedUpdateWithoutCharacterInput>
     create: XOR<InventorysCreateWithoutCharacterInput, InventorysUncheckedCreateWithoutCharacterInput>
-    where?: InventorysWhereInput
   }
 
-  export type InventorysUpdateToOneWithWhereWithoutCharacterInput = {
-    where?: InventorysWhereInput
+  export type InventorysUpdateWithWhereUniqueWithoutCharacterInput = {
+    where: InventorysWhereUniqueInput
     data: XOR<InventorysUpdateWithoutCharacterInput, InventorysUncheckedUpdateWithoutCharacterInput>
   }
 
-  export type InventorysUpdateWithoutCharacterInput = {
-    ItemCode?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type InventorysUpdateManyWithWhereWithoutCharacterInput = {
+    where: InventorysScalarWhereInput
+    data: XOR<InventorysUpdateManyMutationInput, InventorysUncheckedUpdateManyWithoutCharacterInput>
   }
 
-  export type InventorysUncheckedUpdateWithoutCharacterInput = {
-    inventoryId?: IntFieldUpdateOperationsInput | number
-    ItemCode?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type InventorysScalarWhereInput = {
+    AND?: InventorysScalarWhereInput | InventorysScalarWhereInput[]
+    OR?: InventorysScalarWhereInput[]
+    NOT?: InventorysScalarWhereInput | InventorysScalarWhereInput[]
+    inventoryId?: IntFilter<"Inventorys"> | number
+    CharacterId?: IntFilter<"Inventorys"> | number
+    ItemCode?: IntFilter<"Inventorys"> | number
+    count?: IntFilter<"Inventorys"> | number
+    createdAt?: DateTimeFilter<"Inventorys"> | Date | string
+    updatedAt?: DateTimeFilter<"Inventorys"> | Date | string
   }
 
-  export type EquipsUpsertWithoutCharacterInput = {
+  export type EquipsUpsertWithWhereUniqueWithoutCharacterInput = {
+    where: EquipsWhereUniqueInput
     update: XOR<EquipsUpdateWithoutCharacterInput, EquipsUncheckedUpdateWithoutCharacterInput>
     create: XOR<EquipsCreateWithoutCharacterInput, EquipsUncheckedCreateWithoutCharacterInput>
-    where?: EquipsWhereInput
   }
 
-  export type EquipsUpdateToOneWithWhereWithoutCharacterInput = {
-    where?: EquipsWhereInput
+  export type EquipsUpdateWithWhereUniqueWithoutCharacterInput = {
+    where: EquipsWhereUniqueInput
     data: XOR<EquipsUpdateWithoutCharacterInput, EquipsUncheckedUpdateWithoutCharacterInput>
   }
 
-  export type EquipsUpdateWithoutCharacterInput = {
-    ItemCode?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type EquipsUpdateManyWithWhereWithoutCharacterInput = {
+    where: EquipsScalarWhereInput
+    data: XOR<EquipsUpdateManyMutationInput, EquipsUncheckedUpdateManyWithoutCharacterInput>
   }
 
-  export type EquipsUncheckedUpdateWithoutCharacterInput = {
-    equipId?: IntFieldUpdateOperationsInput | number
-    ItemCode?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type EquipsScalarWhereInput = {
+    AND?: EquipsScalarWhereInput | EquipsScalarWhereInput[]
+    OR?: EquipsScalarWhereInput[]
+    NOT?: EquipsScalarWhereInput | EquipsScalarWhereInput[]
+    equipId?: IntFilter<"Equips"> | number
+    CharacterId?: IntFilter<"Equips"> | number
+    ItemCode?: IntFilter<"Equips"> | number
+    createdAt?: DateTimeFilter<"Equips"> | Date | string
+    updatedAt?: DateTimeFilter<"Equips"> | Date | string
   }
 
   export type CharactersCreateWithoutInventoryInput = {
@@ -6385,7 +6519,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UsersCreateNestedOneWithoutCharacterInput
-    equip?: EquipsCreateNestedOneWithoutCharacterInput
+    equip?: EquipsCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersUncheckedCreateWithoutInventoryInput = {
@@ -6397,7 +6531,7 @@ export namespace Prisma {
     money?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    equip?: EquipsUncheckedCreateNestedOneWithoutCharacterInput
+    equip?: EquipsUncheckedCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersCreateOrConnectWithoutInventoryInput = {
@@ -6424,7 +6558,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutCharacterNestedInput
-    equip?: EquipsUpdateOneWithoutCharacterNestedInput
+    equip?: EquipsUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersUncheckedUpdateWithoutInventoryInput = {
@@ -6436,7 +6570,7 @@ export namespace Prisma {
     money?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    equip?: EquipsUncheckedUpdateOneWithoutCharacterNestedInput
+    equip?: EquipsUncheckedUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersCreateWithoutEquipInput = {
@@ -6447,7 +6581,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UsersCreateNestedOneWithoutCharacterInput
-    inventory?: InventorysCreateNestedOneWithoutCharacterInput
+    inventory?: InventorysCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersUncheckedCreateWithoutEquipInput = {
@@ -6459,7 +6593,7 @@ export namespace Prisma {
     money?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    inventory?: InventorysUncheckedCreateNestedOneWithoutCharacterInput
+    inventory?: InventorysUncheckedCreateNestedManyWithoutCharacterInput
   }
 
   export type CharactersCreateOrConnectWithoutEquipInput = {
@@ -6486,7 +6620,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutCharacterNestedInput
-    inventory?: InventorysUpdateOneWithoutCharacterNestedInput
+    inventory?: InventorysUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersUncheckedUpdateWithoutEquipInput = {
@@ -6498,7 +6632,7 @@ export namespace Prisma {
     money?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventory?: InventorysUncheckedUpdateOneWithoutCharacterNestedInput
+    inventory?: InventorysUncheckedUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersCreateManyUserInput = {
@@ -6518,8 +6652,8 @@ export namespace Prisma {
     money?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventory?: InventorysUpdateOneWithoutCharacterNestedInput
-    equip?: EquipsUpdateOneWithoutCharacterNestedInput
+    inventory?: InventorysUpdateManyWithoutCharacterNestedInput
+    equip?: EquipsUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersUncheckedUpdateWithoutUserInput = {
@@ -6530,8 +6664,8 @@ export namespace Prisma {
     money?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventory?: InventorysUncheckedUpdateOneWithoutCharacterNestedInput
-    equip?: EquipsUncheckedUpdateOneWithoutCharacterNestedInput
+    inventory?: InventorysUncheckedUpdateManyWithoutCharacterNestedInput
+    equip?: EquipsUncheckedUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharactersUncheckedUpdateManyWithoutUserInput = {
@@ -6540,6 +6674,64 @@ export namespace Prisma {
     health?: IntFieldUpdateOperationsInput | number
     power?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventorysCreateManyCharacterInput = {
+    inventoryId?: number
+    ItemCode: number
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EquipsCreateManyCharacterInput = {
+    equipId?: number
+    ItemCode: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InventorysUpdateWithoutCharacterInput = {
+    ItemCode?: IntFieldUpdateOperationsInput | number
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventorysUncheckedUpdateWithoutCharacterInput = {
+    inventoryId?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventorysUncheckedUpdateManyWithoutCharacterInput = {
+    inventoryId?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EquipsUpdateWithoutCharacterInput = {
+    ItemCode?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EquipsUncheckedUpdateWithoutCharacterInput = {
+    equipId?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EquipsUncheckedUpdateManyWithoutCharacterInput = {
+    equipId?: IntFieldUpdateOperationsInput | number
+    ItemCode?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6553,6 +6745,10 @@ export namespace Prisma {
      * @deprecated Use UsersCountOutputTypeDefaultArgs instead
      */
     export type UsersCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UsersCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CharactersCountOutputTypeDefaultArgs instead
+     */
+    export type CharactersCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CharactersCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UsersDefaultArgs instead
      */

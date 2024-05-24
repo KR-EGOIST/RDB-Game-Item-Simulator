@@ -34,16 +34,17 @@ model Characters {
   updatedAt     DateTime    @updatedAt @map("updated_at")
 
   user          Users       @relation(fields: [UserId], references: [userId], onDelete: Cascade)
-  inventory     Inventorys?
-  equip         Equips?
+  inventory     Inventorys[]
+  equip         Equips[]
 
   @@map("Characters")
 }
 
 model Inventorys {
   inventoryId   Int         @id @default(autoincrement()) @map("inventory_id")
-  CharacterId   Int         @unique @map("character_id")
+  CharacterId   Int         @map("character_id")
   ItemCode      Int         @map("item_code")
+  count         Int         @map("count")
 
   createdAt     DateTime    @default(now()) @map("created_at")
   updatedAt     DateTime    @updatedAt @map("updated_at")
@@ -55,7 +56,7 @@ model Inventorys {
 
 model Equips {
   equipId       Int         @id @default(autoincrement()) @map("equip_id")
-  CharacterId   Int         @unique @map("character_id")
+  CharacterId   Int         @map("character_id")
   ItemCode      Int         @map("item_code")
 
   createdAt     DateTime    @default(now()) @map("created_at")

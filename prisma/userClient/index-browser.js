@@ -143,6 +143,7 @@ exports.Prisma.InventorysScalarFieldEnum = {
   inventoryId: 'inventoryId',
   CharacterId: 'CharacterId',
   ItemCode: 'ItemCode',
+  count: 'count',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

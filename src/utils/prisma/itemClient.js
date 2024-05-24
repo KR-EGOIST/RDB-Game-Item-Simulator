@@ -1,4 +1,4 @@
-import { PrismaClient } from '../../../prisma/itemClient/index.js';
+import { PrismaClient } from '../../../prisma/itemClient/default.js';
 
 export const itemPrisma = new PrismaClient({
   // Prisma를 이용해 데이터베이스를 접근할 때, SQL을 출력해줍니다.
