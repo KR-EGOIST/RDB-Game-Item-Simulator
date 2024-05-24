@@ -97,7 +97,7 @@ router.post('/sign-in', async (req, res, next) => {
   });
 
   if (!user) {
-    return res.status(401).json({
+    return res.status(404).json({
       message: '존재하지 않는 아이디입니다.',
     });
   }

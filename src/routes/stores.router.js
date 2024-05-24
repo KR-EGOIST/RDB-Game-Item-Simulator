@@ -47,7 +47,7 @@ router.post(
       }
 
       if (totalPrice > character.money) {
-        return res.status(401).json({
+        return res.status(403).json({
           message: '잔액이 부족합니다.',
         });
       }
@@ -166,11 +166,11 @@ router.patch(
         });
 
         if (!inven) {
-          return res.status(401).json({
+          return res.status(404).json({
             message: `인벤토리에 ${goods.item_code} 아이템이 없습니다.`,
           });
         } else if (inven.count - +goods.count < 0) {
-          return res.status(401).json({
+          return res.status(404).json({
             message: `인벤토리에 ${goods.item_code} 아이템이 부족합니다.`,
           });
         } else {
