@@ -318,10 +318,17 @@ router.post(
       },
     });
 
-    if (inven.count === 0) {
+    const updateInven = await userPrisma.inventorys.findFirst({
+      where: {
+        CharacterId: +characterId,
+        ItemCode: item_code,
+      },
+    });
+
+    if (updateInven.count === 0) {
       await userPrisma.inventorys.delete({
         where: {
-          inventoryId: inven.inventoryId,
+          inventoryId: updateInven.inventoryId,
           CharacterId: +characterId,
           ItemCode: item_code,
         },
