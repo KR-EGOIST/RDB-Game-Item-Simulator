@@ -137,6 +137,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -162,8 +166,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./itemClient\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"ITEM_DATABASE_URL\")\n}\n\nmodel Items {\n  itemCode  Int    @id @default(autoincrement()) @map(\"item_code\")\n  itemName  String @map(\"item_name\")\n  itemPrice Int    @map(\"item_price\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  itemStat ItemStats?\n\n  @@map(\"Items\")\n}\n\nmodel ItemStats {\n  itemStatId Int @id @default(autoincrement()) @map(\"item_stat_id\")\n  ItemCode   Int @unique @map(\"item_code\")\n  health     Int @default(0) @map(\"health\")\n  power      Int @default(0) @map(\"power\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  item Items @relation(fields: [ItemCode], references: [itemCode], onDelete: Cascade)\n\n  @@map(\"ItemStats\")\n}\n",
-  "inlineSchemaHash": "866e5f213285e0b2274f512680cb1fc82b05d90b39d4b9d2543045aed476b45a",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"./itemClient\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"ITEM_DATABASE_URL\")\n}\n\nmodel Items {\n  itemCode  Int    @id @default(autoincrement()) @map(\"item_code\")\n  itemName  String @map(\"item_name\")\n  itemPrice Int    @map(\"item_price\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  itemStat ItemStats?\n\n  @@map(\"Items\")\n}\n\nmodel ItemStats {\n  itemStatId Int @id @default(autoincrement()) @map(\"item_stat_id\")\n  ItemCode   Int @unique @map(\"item_code\")\n  health     Int @default(0) @map(\"health\")\n  power      Int @default(0) @map(\"power\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  item Items @relation(fields: [ItemCode], references: [itemCode], onDelete: Cascade)\n\n  @@map(\"ItemStats\")\n}\n",
+  "inlineSchemaHash": "b7d976a9eed2dc135fcc700e376eee76dcf3b885eb332383c840cf0027a7aed1",
   "copyEngine": true
 }
 
@@ -203,6 +207,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "prisma/itemClient/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
+path.join(process.cwd(), "prisma/itemClient/libquery_engine-debian-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/itemClient/schema.prisma")
