@@ -27,8 +27,8 @@ model ItemStats {
   health        Int         @default(0) @map("health")
   power         Int         @default(0) @map("power")
 
-  createdAt      DateTime    @default(now()) @map("created_at")
-  updatedAt      DateTime    @updatedAt @map("updated_at")
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
 
   item          Items       @relation(fields: [ItemCode], references: [itemCode], onDelete: Cascade)
 
