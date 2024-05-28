@@ -13,14 +13,14 @@ router.post('/characters', authMiddleware, async (req, res, next) => {
     const { name } = req.body;
 
     if (!name) {
-      return res.status(401).json({
+      return res.status(400).json({
         message: '캐릭터 이름을 입력해주세요.',
       });
     }
 
     const space = /\s/g;
     if (name.match(space)) {
-      return res.status(401).json({
+      return res.status(400).json({
         message: '캐릭터 이름에 공백이 포함되어있습니다.',
       });
     }
@@ -45,7 +45,7 @@ router.post('/characters', authMiddleware, async (req, res, next) => {
       },
     });
 
-    return res.status(201).json({
+    return res.status(200).json({
       message: '캐릭터를 생성했습니다.',
       data: character,
     });

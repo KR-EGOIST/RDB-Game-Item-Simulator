@@ -23,13 +23,13 @@ router.post('/items', async (req, res, next) => {
     }
 
     if (!item_name) {
-      return res.status(403).json({
+      return res.status(400).json({
         message: '아이템 이름을 입력해주세요.',
       });
     }
 
     if (!item_price) {
-      return res.status(403).json({
+      return res.status(400).json({
         message: '아이템 가격을 입력해주세요.',
       });
     }

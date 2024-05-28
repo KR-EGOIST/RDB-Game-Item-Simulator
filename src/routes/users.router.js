@@ -28,19 +28,19 @@ router.post('/sign-up', async (req, res, next) => {
     const space = /\s/g;
 
     if (password.match(space)) {
-      return res.status(401).json({
+      return res.status(400).json({
         message: '비밀번호에 공백이 포함되어있습니다.',
       });
     }
 
     if (password.length < 6) {
-      return res.status(401).json({
+      return res.status(400).json({
         message: '비밀번호는 6자리 이상이어야 합니다.',
       });
     }
 
     if (password !== passwordCK) {
-      return res.status(401).json({
+      return res.status(400).json({
         message: '비밀번호가 일치하지 않습니다.',
       });
     }
@@ -52,7 +52,7 @@ router.post('/sign-up', async (req, res, next) => {
     const regex = /^[a-z][a-z0-9]{6,15}$/;
 
     if (!regex.test(id)) {
-      return res.status(401).json({
+      return res.status(400).json({
         message:
           '아이디는 영어 소문자로 시작하며, 영어 소문자, 숫자만 허용하며, 글자 수는 6부터 15까지 허용합니다.',
       });
@@ -103,7 +103,7 @@ router.post('/sign-in', async (req, res, next) => {
   }
   // 입력받은 사용자의 비밀번호와 데이터베이스에 저장된 비밀번호를 비교합니다.
   else if (!(await bcrypt.compare(password, user.password))) {
-    return res.status(401).json({
+    return res.status(400).json({
       message: '비밀번호가 일치하지 않습니다.',
     });
   }
